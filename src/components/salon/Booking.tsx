@@ -96,7 +96,7 @@ export function Booking() {
             <div className="mb-5 h-2 overflow-hidden rounded-full bg-muted">
               <motion.div className="h-full rounded-full bg-gradient-primary" animate={{ width: `${((step + 1) / 4) * 100}%` }} transition={{ duration: 0.5 }} />
             </div>
-            <p className="mb-4 font-display text-lg font-bold">{tr(t.stepHint[step])}</p>
+            <p className="mb-4 font-display text-lg font-bold">{tr(t.stepHint[step]!)}</p>
 
             <div className="relative min-h-[300px]">
               <AnimatePresence mode="wait" custom={direction} initial={false}>
@@ -143,7 +143,7 @@ export function Booking() {
                       {date !== null && (
                         <div className="mt-4 grid grid-cols-3 gap-2">
                           {timeSlots.map((s) => {
-                            const booked = isBooked(days[date], s);
+                            const booked = isBooked(days[date]!, s);
                             const h = parseInt(s);
                             const label = lang === "ar" ? `${num(h > 12 ? h - 12 : h)}:${num("00")} ${h >= 12 ? "م" : "ص"}` : `${h > 12 ? h - 12 : h}:00 ${h >= 12 ? "pm" : "am"}`;
                             return (
@@ -168,7 +168,7 @@ export function Booking() {
                         <p className="mb-2 font-display font-bold">{tr(t.summary)}</p>
                         {chosen.map((s) => <p key={s.id} className="flex justify-between"><span>{tr(s.name)}</span><span>{price(s.price)}</span></p>)}
                         <p className="mt-2 text-muted-foreground">👩‍🎨 {stylistName}</p>
-                        {date !== null && <p className="text-muted-foreground">📅 {days[date].toLocaleDateString(locale, { weekday: "long", day: "numeric", month: "long" })} — {slot && num(slot)}</p>}
+                        {date !== null && <p className="text-muted-foreground">📅 {days[date]!.toLocaleDateString(locale, { weekday: "long", day: "numeric", month: "long" })} — {slot && num(slot)}</p>}
                         <p className="mt-2 flex justify-between border-t pt-2 font-bold text-primary"><span>{tr(t.total)}</span><span>{price(total)}</span></p>
                       </div>
                     </div>

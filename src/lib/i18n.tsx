@@ -4,7 +4,7 @@ import type { L, Lang } from "@/data/salon";
 const AR_DIGITS = "٠١٢٣٤٥٦٧٨٩";
 export function toDigits(v: string | number, lang: Lang) {
   const s = String(v);
-  return lang === "ar" ? s.replace(/\d/g, (d) => AR_DIGITS[+d]) : s;
+  return lang === "ar" ? s.replace(/\d/g, (d) => AR_DIGITS[+d] ?? d) : s;
 }
 export function formatPrice(n: number, lang: Lang) {
   return lang === "ar" ? `${toDigits(n.toLocaleString("en-US").replace(/,/g, "٬"), "ar")} ج.م` : `EGP ${n.toLocaleString("en-US")}`;
