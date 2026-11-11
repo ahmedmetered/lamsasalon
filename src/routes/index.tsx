@@ -1,23 +1,37 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { LangProvider } from "@/lib/i18n";
+import { Footer, Header, Hero, Offer, Services, Team, Visit } from "@/components/salon/Sections";
+import { Booking } from "@/components/salon/Booking";
 
-// The home route ships no og:image, so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "صالون لمسة | Lamsa Salon — لمسة تفرق" },
+      { name: "description", content: "صالون لمسة للسيدات: شعر، مكياج، أظافر وعناية بالبشرة. اطلبي موعدك أونلاين." },
+      { property: "og:title", content: "صالون لمسة | Lamsa Salon" },
+      { property: "og:description", content: "شعر، مكياج، أظافر وعناية بالبشرة — لمسة تفرق." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <LangProvider>
+      <div className="mx-auto max-w-5xl overflow-x-hidden">
+        <Header />
+        <main>
+          <Hero />
+          <Services />
+          <Team />
+          <Offer />
+          <Booking />
+          <Visit />
+        </main>
+        <Footer />
+      </div>
+    </LangProvider>
   );
 }
