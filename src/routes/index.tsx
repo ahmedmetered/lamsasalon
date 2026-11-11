@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { LangProvider } from "@/lib/i18n";
-import { Footer, Header, Hero, Offer, Services, Team, Visit } from "@/components/salon/Sections";
+import { Footer, Header, Hero, Ticker, Offer, Services, Team, Visit } from "@/components/salon/Sections";
 import { Booking } from "@/components/salon/Booking";
 
 export const Route = createFileRoute("/")({
@@ -20,10 +20,11 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <LangProvider>
-      <div className="mx-auto max-w-5xl overflow-x-hidden">
+      <div className="mx-auto max-w-5xl overflow-x-hidden border-x border-foreground bg-background">
         <Header />
         <main>
           <Hero />
+          <Ticker />
           <Services />
           <Team />
           <Offer />
