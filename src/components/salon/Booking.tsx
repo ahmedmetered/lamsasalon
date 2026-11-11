@@ -140,7 +140,7 @@ export function Booking() {
                             const label = lang === "ar" ? `${num(h > 12 ? h - 12 : h)}:${num("00")} ${h >= 12 ? "م" : "ص"}` : `${h > 12 ? h - 12 : h}:00 ${h >= 12 ? "pm" : "am"}`;
                             return (
                               <motion.button key={s} disabled={booked} onClick={() => setSlot(s)}
-                                whileTap={reduce || booked ? undefined : { scale: 0.88, rotate: -3 }}
+                                whileTap={reduce || booked ? {} : { scale: 0.88, rotate: -3 }}
                                 animate={slot === s && !reduce ? { scale: [1.12, 0.94, 1], rotate: [-4, 2, 0] } : { scale: 1, rotate: 0 }}
                                 transition={{ duration: 0.28 }}
                                 className={`border-2 py-2 text-sm font-bold ${booked ? "cursor-not-allowed border-muted text-muted-foreground line-through opacity-50" : slot === s ? "border-primary bg-primary text-primary-foreground" : "border-foreground"}`}
