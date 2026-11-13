@@ -37,7 +37,7 @@ export function Hero() {
       <Collage className="opacity-90" />
       <div className="relative">
         <p className="text-xs font-bold uppercase tracking-[0.3em]">{lang === "ar" ? "العدد ٠١ — جمال وموضة" : "Issue 01 — Beauty & Fashion"}</p>
-        <h1 key={lang} aria-label={name} className="mt-4 font-display text-[22vw] font-bold leading-[0.85] text-secondary md:text-[11rem]">
+        <h1 key={lang} aria-label={name} className={`mt-4 font-display font-bold leading-[0.85] text-secondary ${lang === "ar" ? "text-[22vw] md:text-[11rem]" : "text-[15vw] md:text-[9.5rem]"}`}>
           {parts.map((c, i) => (
             <motion.span key={i} aria-hidden className="inline-block whitespace-pre"
               initial={reduce ? false : { y: "100%", opacity: 0 }} animate={{ y: 0, opacity: 1 }}
